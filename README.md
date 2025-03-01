@@ -27,20 +27,6 @@ Open the NuGet Package Manager.
 Search for Flavio.Santos.UuidV7.NetCore.
 Install the package into your project.
 
-
-```csharp
-using System;
-using Flavio.Santos.UuidV7.NetCore;
-
-class Program
-{
-    static void Main()
-    {
-        Guid newUuid = UuidV7.Generate();
-        Console.WriteLine($"Generated UUID v7: {newUuid}");
-    }
-}
-
 ### 🚀 Usage
 
 ```csharp
