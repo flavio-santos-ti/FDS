@@ -15,6 +15,7 @@ This repository contains various .NET libraries developed to improve performance
 
 
 ### 🛠 Installation
+
 You can install the package directly via NuGet:
 
 ```sh
@@ -23,9 +24,9 @@ dotnet add package Flavio.Santos.UuidV7.NetCore
 
 Or via Visual Studio Package Manager:
 
-Open the NuGet Package Manager.
-Search for Flavio.Santos.UuidV7.NetCore.
-Install the package into your project.
+1. Open the **NuGet Package Manager**.
+2. Search for **Flavio.Santos.UuidV7.NetCore**.
+3. Install the package into your project.
 
 ### 🚀 Usage
 
@@ -43,7 +44,4 @@ class Program
 }
 ```
 
-1. Open the **NuGet Package Manager**.
-2. Search for **Flavio.Santos.UuidV7.NetCore**.
-3. Install the package into your project.
 
