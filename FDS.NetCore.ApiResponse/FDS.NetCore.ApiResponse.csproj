@@ -5,13 +5,13 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
-    <PackageId>Flavio.Santos.UuidV7.NetCore</PackageId>
-    <Version>1.0.2</Version>
+    <PackageId>Flavio.Santos.NetCore.ApiResponse</PackageId>
+    <Version>1.0.1</Version>
     <Authors>Flavio dos Santos</Authors>
     <Company>FDS</Company>
-    <Product>FDS UuidV7 Generator</Product>
-    <Description>Library for generating UUID v7 (time-based UUIDs) in .NET</Description>
-    <PackageTags>UUID, GUID, UUIDv7, .NET, NetCore, Uuid Generator</PackageTags>
+    <Product>FDS API Response Library</Product>
+    <Description>A library to standardize API responses in .NET Core</Description>
+    <PackageTags>API, Response, .NET, CleanArchitecture</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>Copyright © 2025 Flavio dos Santos</Copyright>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -21,5 +21,8 @@
     <PackageProjectUrl>https://www.linkedin.com/in/flavio-santos-ti/</PackageProjectUrl>
   </PropertyGroup>
 
-  
+  <ItemGroup>
+    <None Include="bin\$(Configuration)\$(TargetFramework)\FDS.NetCore.ApiResponse.xml" Pack="true" PackagePath="lib\net8.0\" />
+  </ItemGroup>
+
 </Project>
