@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
 
     <PackageId>Flavio.Santos.NetCore.ApiResponse</PackageId>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Authors>Flavio dos Santos</Authors>
     <Company>FDS</Company>
     <Product>FDS API Response Library</Product>
@@ -19,10 +19,12 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
 
     <PackageProjectUrl>https://www.linkedin.com/in/flavio-santos-ti/</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="bin\$(Configuration)\$(TargetFramework)\FDS.NetCore.ApiResponse.xml" Pack="true" PackagePath="lib\net8.0\" />
+    <None Include="README.md" Pack="true" PackagePath="" />
   </ItemGroup>
 
 </Project>
