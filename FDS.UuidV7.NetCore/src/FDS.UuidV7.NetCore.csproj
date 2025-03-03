@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
 
     <PackageId>Flavio.Santos.UuidV7.NetCore</PackageId>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <Authors>Flavio dos Santos</Authors>
     <Company>FDS</Company>
     <Product>FDS UuidV7 Generator</Product>
@@ -19,7 +19,11 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
 
     <PackageProjectUrl>https://www.linkedin.com/in/flavio-santos-ti/</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="" />
+  </ItemGroup>  
   
 </Project>
