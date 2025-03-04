@@ -129,3 +129,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 - [NuGet Package: Flavio.Santos.NetCore.ApiResponse](https://www.nuget.org/packages/Flavio.Santos.NetCore.ApiResponse/)  
 - [Author LinkedIn: Flavio Santos](https://www.linkedin.com/in/flavio-santos-ti/)
+
+### 🔙 [Back to Main README](../README.md)
