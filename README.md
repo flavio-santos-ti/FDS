@@ -1,8 +1,8 @@
 # FDS .NET Core Libraries
 
-![.NET Core](https://img.shields.io/badge/.NET%20Core-8.0-blueviolet?style=flat&logo=dotnet)  
-![NuGet](https://img.shields.io/nuget/v/Flavio.Santos.NetCore.ApiResponse?label=NuGet%20ApiResponse)  
-![NuGet](https://img.shields.io/nuget/v/Flavio.Santos.UuidV7.NetCore?label=NuGet%20UuidV7) 
+![.NET Core](https://img.shields.io/badge/.NET%20Core-8.0-blueviolet?style=flat&logo=dotnet) 
+![NuGet ApiResponse](https://img.shields.io/nuget/v/Flavio.Santos.NetCore.ApiResponse?label=NuGet%20ApiResponse) 
+![NuGet UuidV7](https://img.shields.io/nuget/v/Flavio.Santos.UuidV7.NetCore?label=NuGet%20UuidV7)  
 
 This repository contains various .NET libraries developed to improve performance, security, and maintainability in .NET applications.
 
