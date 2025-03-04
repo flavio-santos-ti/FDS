@@ -1,53 +1,131 @@
-# FDS.UuidV7.NetCore
+# FDS.NetCore.ApiResponse
 
 🚀 **FDS.UuidV7.NetCore** is a lightweight .NET library for generating **UUID v7** (time-based UUIDs) according to the official specification.
 
 [![NuGet](https://img.shields.io/nuget/v/Flavio.Santos.UuidV7.NetCore.svg)](https://www.nuget.org/packages/Flavio.Santos.UuidV7.NetCore/)
 [![NuGet Downloads](https://img.shields.io/nuget/dt/Flavio.Santos.UuidV7.NetCore.svg)](https://www.nuget.org/packages/Flavio.Santos.UuidV7.NetCore/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+![.NET Core](https://img.shields.io/badge/.NET%20Core-8.0-blue?logo=dotnet)
 
 ## 📦 Installation
 
 You can install this package via **NuGet Package Manager**:
 
 ```sh
-dotnet add package Flavio.Santos.UuidV7.NetCore --version 1.0.3
+dotnet add package Flavio.Santos.NetCore.ApiResponse --version 1.0.2
 ```
 
 Or using Package Manager Console:
 
 ```powershell
-Install-Package Flavio.Santos.UuidV7.NetCore -Version 1.0.3
+Install-Package Flavio.Santos.NetCore.ApiResponse -Version 1.0.2
 ```
 
 ## 🚀 Usage
 
-Generating a UUID v7 is simple:
+### Creating a Standard API Response
 
+#### Adding a New Client
 ```csharp
-using FDS.UuidV7.NetCore;
+public async Task<Response<ClientDto>> AddAsync(ClientRequestDto request)
+{
+    if (await _clientRepository.ExistsByNameAsync(request.Name))
+    {
+        return Result.Create<ClientDto>(
+            actionType: ActionType.VALIDATION_ERROR,
+            message: "A client with this name already exists."
+        );
+    }
 
-Guid uuidV7 = UuidV7.Generate();
-Console.WriteLine(uuidV7);
+    var client = new Client(Guid.NewGuid(), request.Name);
+    await _clientRepository.AddAsync(client);
+    var clientDto = new ClientDto { Id = client.Id, Name = client.Name };
+
+    return Result.Create(
+        actionType: ActionType.CREATE,
+        message: "Client created successfully.",
+        data: clientDto
+    );
+}
 ```
 
-## 📝 Output Example:
+#### Deleting a Client
+```csharp
+public async Task<Response<bool>> DeleteAsync(Guid id)
+{
+    var client = await _clientRepository.GetByIdAsync(id);
 
-```sh
-018d3f29-8c6f-7123-bf0e-365bfae8b45f
+    if (client is null)
+    {
+        return Result.Create<bool>(
+            actionType: ActionType.NOT_FOUND,
+            message: "Client not found."
+        );
+    }
+
+    await _clientRepository.DeleteAsync(id);
+
+    return Result.Create<bool>(
+        actionType: ActionType.DELETE,
+        message: "Client deleted successfully."
+    );
+}
+```
+
+## 📌 Output Example
+
+#### Client Not Found (404)
+```json
+{
+  "isSuccess": false,
+  "message": "Client not found.",
+  "statusCode": 404
+}
+```
+
+#### Client Created Successfully (201)
+```json
+{
+  "isSuccess": true,
+  "message": "Client created successfully.",
+  "statusCode": 201,
+  "data": {
+    "id": "bf5d9501-032f-447b-bfaf-8cc4fff19e61",
+    "name": "Teste"
+  }
+}
+```
+
+#### Client Already Exists (400)
+```json
+{
+  "isSuccess": false,
+  "message": "A client with this name already exists.",
+  "statusCode": 400
+}
+```
+
+#### Client Deleted Successfully (200)
+```json
+{
+  "isSuccess": true,
+  "message": "Client deleted successfully.",
+  "statusCode": 200
+}
 ```
 
 ## 🎯 Features
 
-✅ Generates UUID v7 based on the official specification
-✅ Fully compatible with .NET 6+ and .NET 8
-✅ No dependencies, lightweight and fast
+- Standardized API response format  
+- Built-in status codes and messages  
+- Easy integration with Clean Architecture  
+- Fully compatible with **.NET 8**  
 
-📜 License
+## 📜 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 🔗 Links
 
--🔹 NuGet Package: Flavio.Santos.UuidV7.NetCore
--🔹 Author LinkedIn: Flavio Santos
+- [NuGet Package: Flavio.Santos.NetCore.ApiResponse](https://www.nuget.org/packages/Flavio.Santos.NetCore.ApiResponse/)  
+- [Author LinkedIn: Flavio Santos](https://www.linkedin.com/in/flavio-santos-ti/)
