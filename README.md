@@ -10,7 +10,7 @@ This repository contains various .NET libraries developed to improve performance
 
 ## 📦 Libraries
 
-### 🔹 [FDS.UuidV7.NetCore](FDS.UuidV7.NetCore/src/README.md)
+### 🔹 FDS.UuidV7.NetCore
 
 A **.NET Core Library** that provides efficient and seamless **UUID v7** generation.
 
