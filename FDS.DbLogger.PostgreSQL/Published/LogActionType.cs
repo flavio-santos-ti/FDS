@@ -1,4 +1,4 @@
-﻿namespace FDS.DbLogger.PostgreSQL.Types;
+﻿namespace FDS.DbLogger.PostgreSQL.Published;
 
 /// <summary>
 /// Represents different types of log actions that can be recorded.

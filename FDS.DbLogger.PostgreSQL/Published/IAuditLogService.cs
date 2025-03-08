@@ -1,7 +1,4 @@
-﻿using FDS.DbLogger.PostgreSQL.Domain.Entities;
-using FDS.DbLogger.PostgreSQL.Types;
-
-namespace FDS.DbLogger.PostgreSQL.Domain.Interfaces;
+﻿namespace FDS.DbLogger.PostgreSQL.Published;
 
 /// <summary>
 /// Service for logging audit events.

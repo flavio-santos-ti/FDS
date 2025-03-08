@@ -11,7 +11,7 @@
     <Company>FDS</Company>
     <Product>FDS API Response Library</Product>
     <Description>A library to standardize API responses in .NET Core</Description>
-    <PackageTags>API, Response, .NET, CleanArchitecture</PackageTags>
+    <PackageTags>API;Response;.NET;CleanArchitecture</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>Copyright © 2025 Flavio dos Santos</Copyright>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>

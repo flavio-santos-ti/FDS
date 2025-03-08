@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace FDS.DbLogger.PostgreSQL.Infrastructure.Persistence.Mappings;
 
-public class AuditLogMap : IEntityTypeConfiguration<AuditLog>
+internal class AuditLogMap : IEntityTypeConfiguration<AuditLog>
 {
     public void Configure(EntityTypeBuilder<AuditLog> builder)
     {

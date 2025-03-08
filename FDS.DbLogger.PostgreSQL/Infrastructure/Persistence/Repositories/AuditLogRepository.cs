@@ -1,17 +1,16 @@
 ﻿using FDS.DbLogger.PostgreSQL.Domain.Entities;
 using FDS.DbLogger.PostgreSQL.Domain.Interfaces;
-using Microsoft.EntityFrameworkCore;
 
 namespace FDS.DbLogger.PostgreSQL.Infrastructure.Persistence.Repositories;
 
 /// <summary>
 /// Repository for handling audit log operations.
 /// </summary>
-public class AuditLogRepository : IAuditLogRepository
+internal class AuditLogRepository : IAuditLogRepository
 {
-    private readonly IAuditLogDbContext _context;
+    private readonly AuditLogDbContext _context; // Agora usa diretamente AuditLogDbContext
 
-    public AuditLogRepository(IAuditLogDbContext context)
+    public AuditLogRepository(AuditLogDbContext context)
     {
         _context = context;
     }
