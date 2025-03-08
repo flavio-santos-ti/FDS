@@ -7,6 +7,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FDS.UuidV7.NetCore", "FDS.U
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FDS.NetCore.ApiResponse", "FDS.NetCore.ApiResponse\FDS.NetCore.ApiResponse.csproj", "{A2AC076E-81B8-4A48-AD69-47A5406BE42B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FDS.DbLogger.NetCore", "FDS.DbLogger.PostgreSQL\FDS.DbLogger.PostgreSQL.csproj", "{69411A16-8866-4CBD-80C9-ACB138F7994F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 - DbLogger", "03 - DbLogger", "{550B10E4-0091-45BB-AD2C-E248EF91115C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - ApiResponse", "02 - ApiResponse", "{154F43EC-53EB-438C-A43E-F0B58CA004FE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - UuidV7", "01 - UuidV7", "{8E630863-47F7-4396-BBC8-72B493816F31}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,8 +29,17 @@ Global
 		{A2AC076E-81B8-4A48-AD69-47A5406BE42B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2AC076E-81B8-4A48-AD69-47A5406BE42B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2AC076E-81B8-4A48-AD69-47A5406BE42B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69411A16-8866-4CBD-80C9-ACB138F7994F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69411A16-8866-4CBD-80C9-ACB138F7994F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69411A16-8866-4CBD-80C9-ACB138F7994F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69411A16-8866-4CBD-80C9-ACB138F7994F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CC3C40DC-862E-4A16-B1FA-26D81C8EC3F6} = {8E630863-47F7-4396-BBC8-72B493816F31}
+		{A2AC076E-81B8-4A48-AD69-47A5406BE42B} = {154F43EC-53EB-438C-A43E-F0B58CA004FE}
+		{69411A16-8866-4CBD-80C9-ACB138F7994F} = {550B10E4-0091-45BB-AD2C-E248EF91115C}
 	EndGlobalSection
 EndGlobal
