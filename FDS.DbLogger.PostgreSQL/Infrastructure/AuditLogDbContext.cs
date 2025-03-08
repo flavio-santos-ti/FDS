@@ -1,16 +1,15 @@
 ﻿using FDS.DbLogger.PostgreSQL.Domain.Entities;
-using FDS.DbLogger.PostgreSQL.Domain.Interfaces;
 using FDS.DbLogger.PostgreSQL.Infrastructure.Persistence.Mappings;
 using Microsoft.EntityFrameworkCore;
 
-namespace FDS.DbLogger.PostgreSQL;
+namespace FDS.DbLogger.PostgreSQL.Infrastructure;
 
 /// <summary>
 /// Database context for audit logging.
 /// </summary>
-public class AuditLogDbContext : DbContext, IAuditLogDbContext
+internal class AuditLogDbContext : DbContext
 {
-    public DbSet<AuditLog> AuditLogs { get; set; }
+    internal DbSet<AuditLog> AuditLogs { get; set; }
 
     public AuditLogDbContext(DbContextOptions<AuditLogDbContext> options) : base(options) { }
 

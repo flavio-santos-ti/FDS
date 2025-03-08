@@ -5,7 +5,7 @@ namespace FDS.DbLogger.PostgreSQL.Domain.Interfaces;
 /// <summary>
 /// Interface for Audit Log Repository.
 /// </summary>
-public interface IAuditLogRepository
+internal interface IAuditLogRepository
 {
-    Task AddAsync(AuditLog auditLog);
+    internal Task AddAsync(AuditLog auditLog);
 }
