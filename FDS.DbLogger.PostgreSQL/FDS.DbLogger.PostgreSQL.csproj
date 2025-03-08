@@ -4,6 +4,22 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+
+    <PackageId>Flavio.Santos.DbLogger.PostgreSQL</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Flavio dos Santos</Authors>
+    <Company>FDS</Company>
+    <Product>FDS DbLogger PostgreSQL Library</Product>
+    <Description>Library for structured logging in PostgreSQL, providing an isolated and configurable audit log context for applications.</Description>
+    <PackageTags>Logging;PostgreSQL;AuditLog;StructuredLogging;Database;EntityFramework;CleanArchitecture;SOLID;Observability</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Copyright>Copyright © 2025 Flavio dos Santos</Copyright>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+    <PackageProjectUrl>https://www.linkedin.com/in/flavio-santos-ti/</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>

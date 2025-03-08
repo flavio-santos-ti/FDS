@@ -1,6 +1,6 @@
 ﻿using FDS.DbLogger.PostgreSQL.Domain.Entities;
 using FDS.DbLogger.PostgreSQL.Domain.Interfaces;
-using FDS.DbLogger.PostgreSQL.Types;
+using FDS.DbLogger.PostgreSQL.Published;
 
 namespace FDS.DbLogger.PostgreSQL.Application.Services;
 
