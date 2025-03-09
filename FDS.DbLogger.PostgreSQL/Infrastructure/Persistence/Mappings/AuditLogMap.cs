@@ -43,8 +43,13 @@ internal class AuditLogMap : IEntityTypeConfiguration<AuditLog>
             .HasColumnType("TEXT")
             .IsRequired(false);
 
-        builder.Property(e => e.EventData)
-            .HasColumnName("event_data")
+        builder.Property(e => e.RequestData)
+            .HasColumnName("request_data")
+            .HasColumnType("jsonb")
+            .IsRequired(false);
+
+        builder.Property(e => e.ResponseData)
+            .HasColumnName("response_data")
             .HasColumnType("jsonb")
             .IsRequired(false);
     }

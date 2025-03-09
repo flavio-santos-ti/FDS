@@ -19,9 +19,10 @@ internal class AuditLogService : IAuditLogService
     }
 
     public async Task LogAsync(
-        LogActionType eventAction, 
-        string eventMessage, 
-        object? eventData = null, 
+        LogActionType eventAction,
+        string eventMessage,
+        object? requestData = null,
+        object? responseData = null,
         string? userEmail = null)
     {
         int httpStatusCode;
@@ -43,7 +44,8 @@ internal class AuditLogService : IAuditLogService
             eventAction: eventAction,
             contextName: _contextName,
             eventMessage: eventMessage,
-            eventData: eventData,
+            requestData: requestData,
+            responseData: responseData,
             httpStatusCode: httpStatusCode,
             userEmail: userEmail
         );
@@ -54,16 +56,14 @@ internal class AuditLogService : IAuditLogService
     /// <summary>
     /// Logs a validation error event.
     /// </summary>
-    /// <param name="eventMessage">The error message.</param>
-    /// <param name="requestData">Optional data related to the validation error.</param>
-    /// <param name="userEmail">Optional user email associated with the request.</param>
     public async Task LogValidationErrorAsync(string eventMessage, object? requestData = null, string? userEmail = null)
     {
         var auditLog = new AuditLog(
             eventAction: LogActionType.VALIDATION_ERROR,
             contextName: _contextName,
             eventMessage: eventMessage,
-            eventData: requestData, // Agora está mais descritivo
+            requestData: requestData, 
+            responseData: null,
             httpStatusCode: 400,
             userEmail: userEmail
         );
