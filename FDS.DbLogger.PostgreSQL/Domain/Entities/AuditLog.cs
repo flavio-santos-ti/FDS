@@ -19,22 +19,34 @@ internal class AuditLog
     public string? EventMessage { get; private set; }
 
     [JsonIgnore]
-    public string? EventData { get; private set; }
+    public string? RequestData { get; private set; }
+
+    [JsonIgnore]
+    public string? ResponseData { get; private set; }
 
     private AuditLog()
     {
         EventAction = LogActionType.INFO.Value;
         ContextName = "Unknown";
     }
-    public AuditLog(LogActionType eventAction, string contextName, string? eventMessage, object? eventData, int? httpStatusCode = null, string? userEmail = null)
+
+    public AuditLog(
+        LogActionType eventAction,
+        string contextName,
+        string? eventMessage,
+        object? requestData,
+        object? responseData,
+        int? httpStatusCode = null,
+        string? userEmail = null)
     {
         Id = UuidGenerator.Generate();
-        EventTimestamp = DateTime.Now;
+        EventTimestamp = DateTime.UtcNow;
         EventAction = eventAction.Value;
         ContextName = contextName;
         HttpStatusCode = httpStatusCode;
         UserEmail = userEmail;
         EventMessage = eventMessage;
-        EventData = eventData != null ? JsonSerializer.Serialize(eventData) : null;
+        RequestData = requestData != null ? JsonSerializer.Serialize(requestData) : null;
+        ResponseData = responseData != null ? JsonSerializer.Serialize(responseData) : null;
     }
 }
