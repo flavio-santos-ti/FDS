@@ -72,11 +72,11 @@ public async Task<Response<bool>> DeleteAsync(Guid id)
 }
 ```
 
-### 📌 Example of Using the New `LogCreateAsync()` Method
+### Example of Using the New `LogCreateAsync()` Method
 
 Now, when creating a **new order**, we log an **audit entry** using **`LogCreateAsync`**.
 
-#### 🚀 Creating a New Order (`OrderService`)
+#### Creating a New Order (`OrderService`)
 
 ```csharp
 public class OrderService
@@ -128,12 +128,12 @@ public class OrderService
 }
 ```
 
-#### 📌 How Is LogCreateAsync() Used?
+#### How Is LogCreateAsync() Used?
 
-1️⃣ Before saving the order, we check if it already exists → If so, we log a validation error (LogValidationErrorAsync).
-2️⃣ We create the order in the database.
-3️⃣ We log the creation event (LogCreateAsync), including both the request and response data.
-4️⃣ We return a standardized response (CreateSuccess).
+1️⃣ Before saving the order, we check if it already exists → If so, we log a validation error (LogValidationErrorAsync). 
+2️⃣ We create the order in the database. 
+3️⃣ We log the creation event (LogCreateAsync), including both the request and response data. 
+4️⃣ We return a standardized response (CreateSuccess). 
 
 ## 📌 Output Example
 
