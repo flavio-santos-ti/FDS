@@ -131,9 +131,13 @@ public class OrderService
 #### How Is LogCreateAsync() Used?
 
 1️⃣ Before saving the order, we check if it already exists → If so, we log a validation error (LogValidationErrorAsync). 
+
 2️⃣ We create the order in the database. 
+
 3️⃣ We log the creation event (LogCreateAsync), including both the request and response data. 
+
 4️⃣ We return a standardized response (CreateSuccess). 
+
 
 ## 📌 Output Example
 
