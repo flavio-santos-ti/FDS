@@ -48,4 +48,13 @@ public static class Result
     {
         return Create(ActionType.CREATE, message, data);
     }
+
+    /// <summary>
+    /// Creates a standardized response object for a validation error.
+    /// This method internally calls the generic Create method.
+    /// </summary>
+    public static Response<T> CreateValidationError<T>(string message = "Validation error occurred.", T? data = default)
+    {
+        return Create(ActionType.VALIDATION_ERROR, message, data);
+    }
 }
