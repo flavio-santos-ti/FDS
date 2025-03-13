@@ -14,4 +14,14 @@ public interface IAuditLogService
     /// Logs a validation error event.
     /// </summary>
     Task LogValidationErrorAsync(string eventMessage, object? requestData = null, string? userEmail = null);
+
+    /// <summary>
+    /// Logs an informational event.
+    /// </summary>
+    Task LogInfoAsync(string eventMessage, object? requestData = null, string? userEmail = null);
+
+    /// <summary>
+    /// Logs a create action event.
+    /// </summary>
+    Task LogCreateAsync(string eventMessage, object? requestData = null, object? responseData = null, string? userEmail = null);
 }

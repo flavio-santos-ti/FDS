@@ -70,4 +70,30 @@ internal class AuditLogService : IAuditLogService
 
         await _repository.AddAsync(auditLog);
     }
+
+    /// <summary>
+    /// Logs an informational event.
+    /// </summary>
+    public async Task LogInfoAsync(string eventMessage, object? requestData = null, string? userEmail = null)
+    {
+        var auditLog = new AuditLog(
+            eventAction: LogActionType.INFO,
+            contextName: _contextName,
+            eventMessage: eventMessage,
+            requestData: requestData,
+            responseData: null, 
+            httpStatusCode: 200,
+            userEmail: userEmail
+        );
+
+        await _repository.AddAsync(auditLog);
+    }
+
+    /// <summary>
+    /// Logs a create action event.
+    /// </summary>
+    public async Task LogCreateAsync(string eventMessage, object? requestData = null, object? responseData = null, string? userEmail = null)
+    {
+        await LogAsync(LogActionType.CREATE, eventMessage, requestData, responseData, userEmail);
+    }
 }
