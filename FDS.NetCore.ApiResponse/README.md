@@ -2,8 +2,8 @@
 
 🚀 **FDS.UuidV7.NetCore** is a lightweight .NET library for generating **UUID v7** (time-based UUIDs) according to the official specification.
 
-[![NuGet](https://img.shields.io/nuget/v/Flavio.Santos.UuidV7.NetCore.svg)](https://www.nuget.org/packages/Flavio.Santos.UuidV7.NetCore/)
-[![NuGet Downloads](https://img.shields.io/nuget/dt/Flavio.Santos.UuidV7.NetCore.svg)](https://www.nuget.org/packages/Flavio.Santos.UuidV7.NetCore/)
+[![NuGet](https://img.shields.io/nuget/v/Flavio.Santos.NetCore.ApiResponse.svg)](https://www.nuget.org/packages/Flavio.Santos.NetCore.ApiResponse/)
+[![NuGet Downloads](https://img.shields.io/nuget/dt/Flavio.Santos.NetCore.ApiResponse.svg)](https://www.nuget.org/packages/Flavio.Santos.NetCore.ApiResponse/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 ![.NET Core](https://img.shields.io/badge/.NET%20Core-8.0-blue?logo=dotnet)
 
