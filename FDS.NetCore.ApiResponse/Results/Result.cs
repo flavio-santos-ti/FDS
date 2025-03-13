@@ -39,4 +39,13 @@ public static class Result
 
         return new Response<T>(actionType, success, message, statusCode, data);
     }
+
+    /// <summary>
+    /// Creates a standardized response object for a successful creation operation.
+    /// This method internally calls the generic Create method.
+    /// </summary>
+    public static Response<T> CreateSuccess<T>(string message = "Resource created successfully.", T? data = default)
+    {
+        return Create(ActionType.CREATE, message, data);
+    }
 }
