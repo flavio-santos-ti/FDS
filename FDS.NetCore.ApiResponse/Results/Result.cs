@@ -57,4 +57,12 @@ public static class Result
     {
         return Create(ActionType.VALIDATION_ERROR, message, data);
     }
+
+    /// <summary>
+    /// reates a standardized response for an unexpected error.
+    /// </summary>
+    public static Response<T> CreateError<T>(string message = "An unexpected error occurred.", T? data = default)
+    {
+        return Create(ActionType.ERROR, message, data);
+    }
 }
