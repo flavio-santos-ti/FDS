@@ -6,12 +6,12 @@
     <Nullable>enable</Nullable>
 
     <PackageId>Flavio.Santos.NetCore.ApiResponse</PackageId>
-    <Version>1.0.7</Version>
+    <Version>1.0.8</Version>
     <Authors>Flavio dos Santos</Authors>
     <Company>FDS</Company>
     <Product>FDS API Response Library</Product>
     <Description>A library to standardize API responses in .NET Core</Description>
-    <PackageTags>API;Response;.NET;CleanArchitecture</PackageTags>
+    <PackageTags>API;Response;.NET;REST;WebApi;Middleware;ErrorHandling;Standardization</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>Copyright © 2025 Flavio dos Santos</Copyright>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
