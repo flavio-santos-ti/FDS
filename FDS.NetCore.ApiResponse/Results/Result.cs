@@ -73,4 +73,13 @@ public static class Result
     {
         return Create(ActionType.NOT_FOUND, message, data);
     }
+
+    /// <summary>
+    /// Creates a standardized response object for a successful read operation.
+    /// This method internally calls the generic Create method.
+    /// </summary>
+    public static Response<T> CreateRead<T>(string message = "Data retrieved successfully.", T? data = default)
+    {
+        return Create(ActionType.READ, message, data);
+    }
 }
