@@ -1,6 +1,6 @@
 # FDS.DBLogger.PostgreSQL
 
-🚀 **FDS.UuidV7.NetCore** is a lightweight .NET library for generating **UUID v7** (time-based UUIDs) according to the official specification.
+🚀 **FDS.DBLogger.PostgreSQL** is a robust .NET library for structured **audit logging** in PostgreSQL, designed to track and log application events efficiently.
 
 [![NuGet](https://img.shields.io/nuget/v/Flavio.Santos.UuidV7.NetCore.svg)](https://www.nuget.org/packages/Flavio.Santos.UuidV7.NetCore/)
 [![NuGet Downloads](https://img.shields.io/nuget/dt/Flavio.Santos.UuidV7.NetCore.svg)](https://www.nuget.org/packages/Flavio.Santos.UuidV7.NetCore/)
