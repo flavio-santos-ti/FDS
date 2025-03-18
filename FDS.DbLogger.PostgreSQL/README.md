@@ -55,10 +55,15 @@ public async Task<Response<ClientDto>> AddAsync(ClientRequestDto request)
 
 ## 🎯 Features
 
-- Standardized API response format  
-- Built-in status codes and messages  
-- Easy integration with Clean Architecture  
-- Fully compatible with **.NET 8**  
+- **Structured Audit Logging**: Capture and store structured logs for every important action in your system.
+- **Standardized API Response Format**: Ensures consistency in API responses with built-in status codes and messages.
+- **Integration with Clean Architecture**: Designed to fit into modern, well-structured .NET applications.
+- **Event Categorization**: Supports multiple log action types (`CREATE`, `DELETE`, `UPDATE`, `ERROR`, etc.).
+- **Seamless Database Persistence**: Logs are stored in PostgreSQL using `Entity Framework Core`.
+- **Asynchronous Logging**: Uses async methods like `LogCreateAsync()` to avoid blocking API execution.
+- **Automatic Timestamping**: All log entries include precise timestamps for accurate tracking.
+- **Easy Querying & Analysis**: Leverage PostgreSQL’s powerful querying capabilities to analyze logs efficiently.
+- **Compatible with .NET 8**: Fully tested and optimized for the latest .NET version.
 
 ## 📜 License
 
