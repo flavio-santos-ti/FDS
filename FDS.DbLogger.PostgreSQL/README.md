@@ -23,94 +23,33 @@ Install-Package Flavio.Santos.DBLogger.PostgreSQL -Version 1.0.0
 
 ## 🚀 Usage
 
-### Creating a Standard API Response
+### **Logging a Create Event**
+Use `LogCreateAsync()` to log the creation of an entity, capturing relevant request and response data.
 
-#### Adding a New Client
+#### **Example: Logging Client Creation in `ClientService`**
 ```csharp
 public async Task<Response<ClientDto>> AddAsync(ClientRequestDto request)
 {
-    if (await _clientRepository.ExistsByNameAsync(request.Name))
+    try
     {
-        return Result.Create<ClientDto>(
-            actionType: ActionType.VALIDATION_ERROR,
-            message: "A client with this name already exists."
-        );
+        if (await _clientRepository.ExistsByNameAsync(request.Name))
+        {
+            return Result.CreateValidationError<ClientDto>("A client with this name already exists.");
+        }
+
+        var client = new Client(Guid.NewGuid(), request.Name);
+        await _clientRepository.AddAsync(client);
+        var clientDto = new ClientDto { Id = client.Id, Name = client.Name };
+
+        string msg = "Client created successfully.";
+        await _auditLogService.LogCreateAsync(msg, request, clientDto);
+
+        return Result.CreateSuccess(msg, clientDto);
     }
-
-    var client = new Client(Guid.NewGuid(), request.Name);
-    await _clientRepository.AddAsync(client);
-    var clientDto = new ClientDto { Id = client.Id, Name = client.Name };
-
-    return Result.Create(
-        actionType: ActionType.CREATE,
-        message: "Client created successfully.",
-        data: clientDto
-    );
-}
-```
-
-#### Deleting a Client
-```csharp
-public async Task<Response<bool>> DeleteAsync(Guid id)
-{
-    var client = await _clientRepository.GetByIdAsync(id);
-
-    if (client is null)
+    catch (Exception ex)
     {
-        return Result.Create<bool>(
-            actionType: ActionType.NOT_FOUND,
-            message: "Client not found."
-        );
+        return Result.CreateError<ClientDto>($"An unexpected error occurred: {ex.Message}");
     }
-
-    await _clientRepository.DeleteAsync(id);
-
-    return Result.Create<bool>(
-        actionType: ActionType.DELETE,
-        message: "Client deleted successfully."
-    );
-}
-```
-
-## 📌 Output Example
-
-#### Client Not Found (404)
-```json
-{
-  "isSuccess": false,
-  "message": "Client not found.",
-  "statusCode": 404
-}
-```
-
-#### Client Created Successfully (201)
-```json
-{
-  "isSuccess": true,
-  "message": "Client created successfully.",
-  "statusCode": 201,
-  "data": {
-    "id": "bf5d9501-032f-447b-bfaf-8cc4fff19e61",
-    "name": "Teste"
-  }
-}
-```
-
-#### Client Already Exists (400)
-```json
-{
-  "isSuccess": false,
-  "message": "A client with this name already exists.",
-  "statusCode": 400
-}
-```
-
-#### Client Deleted Successfully (200)
-```json
-{
-  "isSuccess": true,
-  "message": "Client deleted successfully.",
-  "statusCode": 200
 }
 ```
 
