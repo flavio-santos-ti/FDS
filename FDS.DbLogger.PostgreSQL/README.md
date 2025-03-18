@@ -38,6 +38,7 @@ CREATE TABLE audit_logs (
     response_data JSONB,
     user_email VARCHAR(255)
 );
+```
 
 ## 🚀 Usage
 
