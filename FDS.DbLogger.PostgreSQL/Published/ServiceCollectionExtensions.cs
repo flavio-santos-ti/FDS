@@ -2,6 +2,7 @@
 using FDS.DbLogger.PostgreSQL.Domain.Interfaces;
 using FDS.DbLogger.PostgreSQL.Infrastructure;
 using FDS.DbLogger.PostgreSQL.Infrastructure.Persistence.Repositories;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -33,7 +34,8 @@ public static class ServiceCollectionExtensions
         services.AddScoped<Func<string, IAuditLogService>>(provider => contextName =>
         {
             var repository = provider.GetRequiredService<IAuditLogRepository>();
-            return new AuditLogService(repository, contextName);
+            var httpContextAccessor = provider.GetRequiredService<IHttpContextAccessor>();
+            return new AuditLogService(repository, contextName, httpContextAccessor);
         });
 
         return services;

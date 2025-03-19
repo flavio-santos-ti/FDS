@@ -11,12 +11,16 @@ namespace FDS.DbLogger.PostgreSQL.Domain.Entities;
 internal class AuditLog
 {
     public Guid Id { get; private set; }
-    public DateTime EventTimestamp { get; private set; }
+    public DateTime EventTimestampLocal { get; private set; }
+    public DateTime EventTimestampUtc { get; private set; }
     public string EventAction { get; private set; }
     public string ContextName { get; private set; }
+    public string? HttpMethod { get; private set; }
+    public string? RequestPath { get; private set; }
     public int? HttpStatusCode { get; private set; }
     public string? UserEmail { get; private set; }
     public string? EventMessage { get; private set; }
+    public string? TraceIdentifier { get; private set; }
 
     [JsonIgnore]
     public string? RequestData { get; private set; }
@@ -33,14 +37,19 @@ internal class AuditLog
     public AuditLog(
         LogActionType eventAction,
         string contextName,
+        string? httpMethod,
+        string? requestPath,
         string? eventMessage,
         object? requestData,
         object? responseData,
+        string? traceIdentifier,
         int? httpStatusCode = null,
-        string? userEmail = null)
+        string? userEmail = null
+        )
     {
         Id = UuidGenerator.Generate();
-        EventTimestamp = DateTime.UtcNow;
+        EventTimestampLocal = DateTime.Now;
+        EventTimestampUtc = DateTime.UtcNow;
         EventAction = eventAction.Value;
         ContextName = contextName;
         HttpStatusCode = httpStatusCode;
@@ -48,5 +57,8 @@ internal class AuditLog
         EventMessage = eventMessage;
         RequestData = requestData != null ? JsonSerializer.Serialize(requestData) : null;
         ResponseData = responseData != null ? JsonSerializer.Serialize(responseData) : null;
+        TraceIdentifier = traceIdentifier;
+        HttpMethod = httpMethod;
+        RequestPath = requestPath;
     }
 }
