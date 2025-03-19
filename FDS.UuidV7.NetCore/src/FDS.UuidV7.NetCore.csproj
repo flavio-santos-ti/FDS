@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
 
     <PackageId>Flavio.Santos.UuidV7.NetCore</PackageId>
-    <Version>1.0.3</Version>
+    <Version>1.0.11</Version>
     <Authors>Flavio dos Santos</Authors>
     <Company>FDS</Company>
     <Product>FDS UuidV7 Generator</Product>

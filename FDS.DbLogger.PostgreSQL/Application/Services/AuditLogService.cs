@@ -1,6 +1,8 @@
 ﻿using FDS.DbLogger.PostgreSQL.Domain.Entities;
 using FDS.DbLogger.PostgreSQL.Domain.Interfaces;
 using FDS.DbLogger.PostgreSQL.Published;
+using FDS.RequestTracking.Storage;
+using Microsoft.AspNetCore.Http;
 
 namespace FDS.DbLogger.PostgreSQL.Application.Services;
 
@@ -11,14 +13,16 @@ internal class AuditLogService : IAuditLogService
 {
     private readonly IAuditLogRepository _repository;
     private readonly string _contextName;
+    private readonly IHttpContextAccessor _httpContextAccessor;
 
-    public AuditLogService(IAuditLogRepository repository, string contextName)
+    public AuditLogService(IAuditLogRepository repository, string contextName, IHttpContextAccessor httpContextAccessor)
     {
         _repository = repository;
         _contextName = contextName;
+        _httpContextAccessor = httpContextAccessor;
     }
 
-    public async Task LogAsync(
+    public async Task<string> LogAsync(
         LogActionType eventAction,
         string eventMessage,
         object? requestData = null,
@@ -27,7 +31,9 @@ internal class AuditLogService : IAuditLogService
     {
         int httpStatusCode;
 
-        if (eventAction == LogActionType.VALIDATION_ERROR)
+        if (eventAction == LogActionType.INFO)
+            httpStatusCode = 100;
+        else if (eventAction == LogActionType.VALIDATION_ERROR)
             httpStatusCode = 400;
         else if (eventAction == LogActionType.NOT_FOUND)
             httpStatusCode = 404;
@@ -40,60 +46,65 @@ internal class AuditLogService : IAuditLogService
         else
             httpStatusCode = 200;
 
+        var traceIdentifier = _httpContextAccessor.HttpContext?.TraceIdentifier ?? "N/A";
+
+        string requestMethod = "UNKNOWN";
+        string requestPath = "UNKNOWN";
+        if (!string.IsNullOrEmpty(traceIdentifier))
+        {
+            var request = RequestDataStorage.GetData(traceIdentifier);
+
+            if (request is not null)
+            {
+                requestMethod = request.Method;
+                requestPath = request.Path;
+            }
+        }
+
         var auditLog = new AuditLog(
             eventAction: eventAction,
             contextName: _contextName,
+            httpMethod: requestMethod,
+            requestPath: requestPath,
             eventMessage: eventMessage,
             requestData: requestData,
             responseData: responseData,
+            traceIdentifier: traceIdentifier,
             httpStatusCode: httpStatusCode,
             userEmail: userEmail
         );
 
         await _repository.AddAsync(auditLog);
+
+        return traceIdentifier;
     }
 
     /// <summary>
     /// Logs a validation error event.
     /// </summary>
-    public async Task LogValidationErrorAsync(string eventMessage, object? requestData = null, string? userEmail = null)
+    public async Task<string> LogValidationErrorAsync(string eventMessage, object? requestData = null, string? userEmail = null)
     {
-        var auditLog = new AuditLog(
-            eventAction: LogActionType.VALIDATION_ERROR,
-            contextName: _contextName,
-            eventMessage: eventMessage,
-            requestData: requestData, 
+        return await LogAsync(
+            LogActionType.VALIDATION_ERROR,
+            eventMessage,
+            requestData,
             responseData: null,
-            httpStatusCode: 400,
-            userEmail: userEmail
-        );
-
-        await _repository.AddAsync(auditLog);
+            userEmail);
     }
 
     /// <summary>
     /// Logs an informational event.
     /// </summary>
-    public async Task LogInfoAsync(string eventMessage, object? requestData = null, string? userEmail = null)
+    public async Task<string> LogInfoAsync(string eventMessage, object? requestData = null, string? userEmail = null)
     {
-        var auditLog = new AuditLog(
-            eventAction: LogActionType.INFO,
-            contextName: _contextName,
-            eventMessage: eventMessage,
-            requestData: requestData,
-            responseData: null, 
-            httpStatusCode: 200,
-            userEmail: userEmail
-        );
-
-        await _repository.AddAsync(auditLog);
+        return await LogAsync(LogActionType.INFO, eventMessage, requestData, responseData: null, userEmail);
     }
 
     /// <summary>
     /// Logs a create action event.
     /// </summary>
-    public async Task LogCreateAsync(string eventMessage, object? requestData = null, object? responseData = null, string? userEmail = null)
+    public async Task<string> LogCreateAsync(string eventMessage, object? requestData = null, object? responseData = null, string? userEmail = null)
     {
-        await LogAsync(LogActionType.CREATE, eventMessage, requestData, responseData, userEmail);
+        return await LogAsync(LogActionType.CREATE, eventMessage, requestData, responseData, userEmail);
     }
 }
