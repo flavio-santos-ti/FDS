@@ -23,7 +23,7 @@ internal class AuditLogService : IAuditLogService
         string eventMessage,
         object? requestData = null,
         object? responseData = null,
-        string? userEmail = null)
+        Guid? userId = null)
     {
         int httpStatusCode;
 
@@ -47,7 +47,7 @@ internal class AuditLogService : IAuditLogService
             requestData: requestData,
             responseData: responseData,
             httpStatusCode: httpStatusCode,
-            userEmail: userEmail
+            userId: userId
         );
 
         await _repository.AddAsync(auditLog);
@@ -56,7 +56,7 @@ internal class AuditLogService : IAuditLogService
     /// <summary>
     /// Logs a validation error event.
     /// </summary>
-    public async Task LogValidationErrorAsync(string eventMessage, object? requestData = null, string? userEmail = null)
+    public async Task LogValidationErrorAsync(string eventMessage, object? requestData = null, Guid? userId = null)
     {
         var auditLog = new AuditLog(
             eventAction: LogActionType.VALIDATION_ERROR,
@@ -65,7 +65,7 @@ internal class AuditLogService : IAuditLogService
             requestData: requestData, 
             responseData: null,
             httpStatusCode: 400,
-            userEmail: userEmail
+            userId: userId
         );
 
         await _repository.AddAsync(auditLog);
@@ -74,7 +74,7 @@ internal class AuditLogService : IAuditLogService
     /// <summary>
     /// Logs an informational event.
     /// </summary>
-    public async Task LogInfoAsync(string eventMessage, object? requestData = null, string? userEmail = null)
+    public async Task LogInfoAsync(string eventMessage, object? requestData = null, Guid? userId = null)
     {
         var auditLog = new AuditLog(
             eventAction: LogActionType.INFO,
@@ -83,7 +83,7 @@ internal class AuditLogService : IAuditLogService
             requestData: requestData,
             responseData: null, 
             httpStatusCode: 200,
-            userEmail: userEmail
+            userId: userId
         );
 
         await _repository.AddAsync(auditLog);
@@ -92,8 +92,8 @@ internal class AuditLogService : IAuditLogService
     /// <summary>
     /// Logs a create action event.
     /// </summary>
-    public async Task LogCreateAsync(string eventMessage, object? requestData = null, object? responseData = null, string? userEmail = null)
+    public async Task LogCreateAsync(string eventMessage, object? requestData = null, object? responseData = null, Guid? userId = null)
     {
-        await LogAsync(LogActionType.CREATE, eventMessage, requestData, responseData, userEmail);
+        await LogAsync(LogActionType.CREATE, eventMessage, requestData, responseData, userId);
     }
 }
