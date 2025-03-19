@@ -15,9 +15,14 @@ internal class AuditLogMap : IEntityTypeConfiguration<AuditLog>
             .HasColumnName("id")
             .ValueGeneratedNever();
 
-        builder.Property(e => e.EventTimestamp)
-            .HasColumnName("event_timestamp")
-            .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+        builder.Property(e => e.EventTimestampLocal)
+            .HasColumnName("event_timestamp_local")
+            .IsRequired();
+
+        builder.Property(e => e.EventTimestampUtc)
+            .HasColumnName("event_timestamp_utc")
+            .IsRequired();
 
         builder.Property(e => e.EventAction)
             .HasColumnName("event_action")
@@ -28,6 +33,16 @@ internal class AuditLogMap : IEntityTypeConfiguration<AuditLog>
             .HasColumnName("context_name")
             .HasMaxLength(255)
             .IsRequired();
+
+        builder.Property(e => e.HttpMethod) 
+            .HasColumnName("http_method")
+            .HasMaxLength(10)
+            .IsRequired(false);
+
+        builder.Property(e => e.RequestPath)
+            .HasColumnName("request_path")
+            .HasMaxLength(500)
+            .IsRequired(false);
 
         builder.Property(e => e.HttpStatusCode)
             .HasColumnName("http_status_code")
@@ -51,6 +66,11 @@ internal class AuditLogMap : IEntityTypeConfiguration<AuditLog>
         builder.Property(e => e.ResponseData)
             .HasColumnName("response_data")
             .HasColumnType("jsonb")
+            .IsRequired(false);
+
+        builder.Property(e => e.TraceIdentifier)
+            .HasColumnName("trace_identifier")
+            .HasMaxLength(50)
             .IsRequired(false);
     }
 }
