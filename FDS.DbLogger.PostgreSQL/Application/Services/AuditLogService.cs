@@ -84,12 +84,7 @@ internal class AuditLogService : IAuditLogService
     /// </summary>
     public async Task<string> LogValidationErrorAsync(string eventMessage, object? requestData = null, Guid? userId = null)
     {
-        return await LogAsync(
-            LogActionType.VALIDATION_ERROR,
-            eventMessage,
-            requestData,
-            responseData: null,
-            userId);
+        return await LogAsync(LogActionType.VALIDATION_ERROR, eventMessage, requestData, responseData: null, userId);
     }
 
     /// <summary>
