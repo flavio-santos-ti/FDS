@@ -102,4 +102,12 @@ internal class AuditLogService : IAuditLogService
     {
         return await LogAsync(LogActionType.CREATE, eventMessage, requestData, responseData, userId);
     }
+
+    /// <summary>
+    /// Logs a not found event.
+    /// </summary>
+    public async Task<string> LogNotFoundAsync(string eventMessage, object? requestData = null, Guid? userId = null)
+    {
+        return await LogAsync(LogActionType.NOT_FOUND, eventMessage, requestData, responseData: null, userId);
+    }
 }
