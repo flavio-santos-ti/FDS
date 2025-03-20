@@ -19,4 +19,9 @@ public interface IAuditLogService
     /// Logs a create action event.
     /// </summary>
     Task<string> LogCreateAsync(string eventMessage, object? requestData = null, object? responseData = null, Guid? userId = null);
+
+    /// <summary>
+    /// Logs a not found event.
+    /// </summary>
+    Task<string> LogNotFoundAsync(string eventMessage, object? requestData = null, Guid? userId = null);
 }
