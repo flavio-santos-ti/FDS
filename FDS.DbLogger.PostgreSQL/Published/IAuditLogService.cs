@@ -24,4 +24,9 @@ public interface IAuditLogService
     /// Logs a not found event.
     /// </summary>
     Task<string> LogNotFoundAsync(string eventMessage, object? requestData = null, Guid? userId = null);
+
+    /// <summary>
+    /// Logs an error event.
+    /// </summary>
+    Task<string> LogErrorAsync(string eventMessage, object? requestData = null, object? responseData = null, Guid? userId = null);
 }
