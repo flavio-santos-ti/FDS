@@ -118,4 +118,12 @@ internal class AuditLogService : IAuditLogService
     {
         return await LogAsync(LogActionType.ERROR, eventMessage, requestData, responseData, userId);
     }
+
+    /// <summary>
+    /// Logs a login creation event.
+    /// </summary>
+    public async Task<string> LogCreateLoginAsync(string eventMessage, object? requestData = null, object? responseData = null, Guid? userId = null)
+    {
+        return await LogAsync(LogActionType.CREATE_LOGIN, eventMessage, requestData, responseData, userId);
+    }
 }

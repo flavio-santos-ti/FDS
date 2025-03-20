@@ -29,4 +29,9 @@ public interface IAuditLogService
     /// Logs an error event.
     /// </summary>
     Task<string> LogErrorAsync(string eventMessage, object? requestData = null, object? responseData = null, Guid? userId = null);
+
+    /// <summary>
+    /// Logs a login creation event.
+    /// </summary>
+    Task<string> LogCreateLoginAsync(string eventMessage, object? requestData = null, object? responseData = null, Guid? userId = null);
 }
