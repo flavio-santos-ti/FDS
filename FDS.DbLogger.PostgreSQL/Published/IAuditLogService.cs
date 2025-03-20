@@ -6,11 +6,6 @@
 public interface IAuditLogService
 {
     /// <summary>
-    /// Logs an event asynchronously.
-    /// </summary>
-    Task<string> LogAsync(LogActionType eventAction, string eventMessage, object? requestData = null, object? responseData = null, Guid? userId = null);
-
-    /// <summary>
     /// Logs a validation error event.
     /// </summary>
     Task<string> LogValidationErrorAsync(string eventMessage, object? requestData = null, Guid? userId = null);
