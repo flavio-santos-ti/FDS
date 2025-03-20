@@ -22,7 +22,7 @@ internal class AuditLogService : IAuditLogService
         _httpContextAccessor = httpContextAccessor;
     }
 
-    public async Task<string> LogAsync(
+    private async Task<string> LogAsync(
         LogActionType eventAction,
         string eventMessage,
         object? requestData = null,
