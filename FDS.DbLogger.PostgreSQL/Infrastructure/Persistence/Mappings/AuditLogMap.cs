@@ -48,9 +48,8 @@ internal class AuditLogMap : IEntityTypeConfiguration<AuditLog>
             .HasColumnName("http_status_code")
             .IsRequired(false);
 
-        builder.Property(e => e.UserEmail)
-            .HasColumnName("user_email")
-            .HasMaxLength(255)
+        builder.Property(e => e.UserId)
+            .HasColumnName("user_id")
             .IsRequired(false);
 
         builder.Property(e => e.EventMessage)

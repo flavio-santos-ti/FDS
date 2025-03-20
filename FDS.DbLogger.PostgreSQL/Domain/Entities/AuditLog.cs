@@ -18,9 +18,9 @@ internal class AuditLog
     public string? HttpMethod { get; private set; }
     public string? RequestPath { get; private set; }
     public int? HttpStatusCode { get; private set; }
-    public string? UserEmail { get; private set; }
     public string? EventMessage { get; private set; }
     public string? TraceIdentifier { get; private set; }
+    public Guid? UserId { get; private set; }
 
     [JsonIgnore]
     public string? RequestData { get; private set; }
@@ -44,7 +44,7 @@ internal class AuditLog
         object? responseData,
         string? traceIdentifier,
         int? httpStatusCode = null,
-        string? userEmail = null
+        Guid? userId = null
         )
     {
         Id = UuidGenerator.Generate();
@@ -53,7 +53,7 @@ internal class AuditLog
         EventAction = eventAction.Value;
         ContextName = contextName;
         HttpStatusCode = httpStatusCode;
-        UserEmail = userEmail;
+        UserId = userId;
         EventMessage = eventMessage;
         RequestData = requestData != null ? JsonSerializer.Serialize(requestData) : null;
         ResponseData = responseData != null ? JsonSerializer.Serialize(responseData) : null;

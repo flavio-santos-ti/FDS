@@ -27,7 +27,7 @@ internal class AuditLogService : IAuditLogService
         string eventMessage,
         object? requestData = null,
         object? responseData = null,
-        string? userEmail = null)
+        Guid? userId = null)
     {
         int httpStatusCode;
 
@@ -71,7 +71,7 @@ internal class AuditLogService : IAuditLogService
             responseData: responseData,
             traceIdentifier: traceIdentifier,
             httpStatusCode: httpStatusCode,
-            userEmail: userEmail
+            userId: userId 
         );
 
         await _repository.AddAsync(auditLog);
@@ -82,29 +82,29 @@ internal class AuditLogService : IAuditLogService
     /// <summary>
     /// Logs a validation error event.
     /// </summary>
-    public async Task<string> LogValidationErrorAsync(string eventMessage, object? requestData = null, string? userEmail = null)
+    public async Task<string> LogValidationErrorAsync(string eventMessage, object? requestData = null, Guid? userId = null)
     {
         return await LogAsync(
             LogActionType.VALIDATION_ERROR,
             eventMessage,
             requestData,
             responseData: null,
-            userEmail);
+            userId);
     }
 
     /// <summary>
     /// Logs an informational event.
     /// </summary>
-    public async Task<string> LogInfoAsync(string eventMessage, object? requestData = null, string? userEmail = null)
+    public async Task<string> LogInfoAsync(string eventMessage, object? requestData = null, Guid? userId = null)
     {
-        return await LogAsync(LogActionType.INFO, eventMessage, requestData, responseData: null, userEmail);
+        return await LogAsync(LogActionType.INFO, eventMessage, requestData, responseData: null, userId);
     }
 
     /// <summary>
     /// Logs a create action event.
     /// </summary>
-    public async Task<string> LogCreateAsync(string eventMessage, object? requestData = null, object? responseData = null, string? userEmail = null)
+    public async Task<string> LogCreateAsync(string eventMessage, object? requestData = null, object? responseData = null, Guid? userId = null)
     {
-        return await LogAsync(LogActionType.CREATE, eventMessage, requestData, responseData, userEmail);
+        return await LogAsync(LogActionType.CREATE, eventMessage, requestData, responseData, userId);
     }
 }
