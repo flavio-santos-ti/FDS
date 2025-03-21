@@ -146,8 +146,8 @@ internal class AuditLogService : IAuditLogService
     /// <summary>
     /// Logs a read action event.
     /// </summary>
-    public async Task<string> LogReadAsync(string eventMessage, object? requestData = null, object? responseData = null, Guid? userId = null)
+    public async Task<string> LogReadAsync(string eventMessage, object? responseData = null, Guid? userId = null)
     {
-        return await LogAsync(LogActionType.READ, eventMessage, requestData, responseData, userId);
+        return await LogAsync(LogActionType.READ, eventMessage, null, responseData, userId);
     }
 }
