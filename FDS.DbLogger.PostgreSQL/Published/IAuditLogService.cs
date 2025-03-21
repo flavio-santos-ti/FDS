@@ -39,4 +39,9 @@ public interface IAuditLogService
     /// Logs an upload creation event.
     /// </summary>
     Task<string> LogCreateUploadAsync(string eventMessage, object? requestData = null, object? responseData = null, Guid? userId = null);
+
+    /// <summary>
+    /// Logs a delete action event.
+    /// </summary>
+    Task<string> LogDeleteAsync(string eventMessage, object? requestData = null, object? responseData = null, Guid? userId = null);
 }
