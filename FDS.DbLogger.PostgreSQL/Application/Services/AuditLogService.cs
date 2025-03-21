@@ -30,7 +30,7 @@ internal class AuditLogService : IAuditLogService
         Guid? userId = null)
     {
         int httpStatusCode;
-
+        
         if (eventAction == LogActionType.INFO)
             httpStatusCode = 100;
         else if (eventAction == LogActionType.VALIDATION_ERROR)
@@ -133,5 +133,13 @@ internal class AuditLogService : IAuditLogService
     public async Task<string> LogCreateUploadAsync(string eventMessage, object? requestData = null, object? responseData = null, Guid? userId = null)
     {
         return await LogAsync(LogActionType.CREATE_UPLOAD, eventMessage, requestData, responseData, userId);
+    }
+
+    /// <summary>
+    /// Logs a delete action event.
+    /// </summary>
+    public async Task<string> LogDeleteAsync(string eventMessage, object? requestData = null, object? responseData = null, Guid? userId = null)
+    {
+        return await LogAsync(LogActionType.DELETE, eventMessage, requestData, responseData, userId);
     }
 }
