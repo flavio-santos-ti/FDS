@@ -43,5 +43,5 @@ public interface IAuditLogService
     /// <summary>
     /// Logs a delete action event.
     /// </summary>
-    Task<string> LogDeleteAsync(string eventMessage, object? requestData = null, object? responseData = null, Guid? userId = null);
+    Task<string> LogDeleteAsync(string eventMessage, Guid? userId = null);
 }

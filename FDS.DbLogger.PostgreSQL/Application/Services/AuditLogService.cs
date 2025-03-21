@@ -138,8 +138,8 @@ internal class AuditLogService : IAuditLogService
     /// <summary>
     /// Logs a delete action event.
     /// </summary>
-    public async Task<string> LogDeleteAsync(string eventMessage, object? requestData = null, object? responseData = null, Guid? userId = null)
+    public async Task<string> LogDeleteAsync(string eventMessage, Guid? userId = null)
     {
-        return await LogAsync(LogActionType.DELETE, eventMessage, requestData, responseData, userId);
+        return await LogAsync(LogActionType.DELETE, eventMessage, null, null, userId);
     }
 }
