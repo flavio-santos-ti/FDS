@@ -63,5 +63,5 @@ public interface IAuditLogService
     /// <summary>
     /// Logs the end of a monitored operation.
     /// </summary>
-    Task LogEndAsync(string eventMessage, object? responseData = null, Guid? userId = null);
+    Task LogEndAsync(string eventMessage, Guid? userId = null);
 }
