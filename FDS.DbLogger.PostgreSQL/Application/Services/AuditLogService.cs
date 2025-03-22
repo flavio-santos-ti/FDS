@@ -31,7 +31,9 @@ internal class AuditLogService : IAuditLogService
     {
         int httpStatusCode;
         
-        if (eventAction == LogActionType.INFO)
+        if (eventAction == LogActionType.INFO ||
+            eventAction == LogActionType.START ||
+            eventAction == LogActionType.END)
             httpStatusCode = 100;
         else if (eventAction == LogActionType.VALIDATION_ERROR)
             httpStatusCode = 400;
