@@ -174,6 +174,6 @@ internal class AuditLogService : IAuditLogService
     /// </summary>
     public async Task LogEndAsync(string eventMessage, object? responseData = null, Guid? userId = null)
     {
-        await LogAsync(LogActionType.INFO, $"[END] - {eventMessage}", requestData: null, responseData, userId);
+        await LogAsync(LogActionType.END, $"[END] - {eventMessage}", requestData: null, responseData, userId);
     }
 }
