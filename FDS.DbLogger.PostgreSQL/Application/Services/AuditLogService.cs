@@ -158,4 +158,12 @@ internal class AuditLogService : IAuditLogService
     {
         return await LogAsync(LogActionType.UPDATE, eventMessage, requestData, responseData, userId);
     }
+
+    /// <summary>
+    /// Logs the start of a monitored operation.
+    /// </summary>
+    public async Task<string> LogStartAsync(string eventMessage, object? requestData = null, Guid? userId = null)
+    {
+        return await LogAsync(LogActionType.INFO, $"[START] - {eventMessage}", requestData, responseData: null, userId);
+    }
 }
