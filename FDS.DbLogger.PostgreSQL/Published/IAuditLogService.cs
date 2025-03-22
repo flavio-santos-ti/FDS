@@ -59,4 +59,9 @@ public interface IAuditLogService
     /// Logs the start of a monitored operation.
     /// </summary>
     Task<string> LogStartAsync(string eventMessage, object? requestData = null, Guid? userId = null);
+
+    /// <summary>
+    /// Logs the end of a monitored operation.
+    /// </summary>
+    Task LogEndAsync(string eventMessage, object? responseData = null, Guid? userId = null)
 }
