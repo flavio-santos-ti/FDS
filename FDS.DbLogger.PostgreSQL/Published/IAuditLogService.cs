@@ -49,4 +49,9 @@ public interface IAuditLogService
     /// Logs a read action event.
     /// </summary>
     Task<string> LogReadAsync(string eventMessage, object? responseData = null, Guid? userId = null);
+
+    /// <summary>
+    /// Logs an update action event.
+    /// </summary>
+    Task<string> LogUpdateAsync(string eventMessage, object? requestData = null, object? responseData = null, Guid? userId = null);
 }
