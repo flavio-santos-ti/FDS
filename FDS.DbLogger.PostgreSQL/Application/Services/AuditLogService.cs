@@ -150,4 +150,12 @@ internal class AuditLogService : IAuditLogService
     {
         return await LogAsync(LogActionType.READ, eventMessage, null, responseData, userId);
     }
+
+    /// <summary>
+    /// Logs an update action event.
+    /// </summary>
+    public async Task<string> LogUpdateAsync(string eventMessage, object? requestData = null, object? responseData = null, Guid? userId = null)
+    {
+        return await LogAsync(LogActionType.UPDATE, eventMessage, requestData, responseData, userId);
+    }
 }
