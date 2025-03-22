@@ -84,6 +84,11 @@ public sealed class LogActionType
     public static readonly LogActionType DELETE = new("DELETE");
 
     /// <summary>
+    /// Represents the start of a monitored process or flow.
+    /// </summary>
+    public static readonly LogActionType START = new("START");
+
+    /// <summary>
     /// Returns the string representation of the log action type.
     /// </summary>
     /// <returns>The string value of the log action type.</returns>
