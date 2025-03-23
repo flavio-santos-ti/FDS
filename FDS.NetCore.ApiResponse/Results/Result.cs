@@ -91,4 +91,12 @@ public static class Result
     {
         return Create(ActionType.DELETE, message, data);
     }
+
+    /// <summary>
+    /// Creates a standardized response object for a successful update operation.
+    /// </summary>
+    public static Response<T> CreateUpdate<T>(string message = "Resource updated successfully.", T? data = default)
+    {
+        return Create(ActionType.UPDATE, message, data);
+    }
 }
