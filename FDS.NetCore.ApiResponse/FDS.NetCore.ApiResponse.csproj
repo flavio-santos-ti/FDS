@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
 
     <PackageId>Flavio.Santos.NetCore.ApiResponse</PackageId>
-    <Version>1.0.10</Version>
+    <Version>1.0.11</Version>
     <Authors>Flavio dos Santos</Authors>
     <Company>FDS</Company>
     <Product>FDS API Response Library</Product>
