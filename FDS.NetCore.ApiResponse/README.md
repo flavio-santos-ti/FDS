@@ -72,6 +72,16 @@ public async Task<Response<bool>> DeleteAsync(Guid id)
 }
 ```
 
+#### Updating  a Client
+```csharp
+public async Task<Response<ClientDto>> UpdateAsync(ClientDto request)
+{
+    // Here I implement the update logic.
+    
+    return Result.CreateUpdate(updatedClientDto);   
+}
+```
+
 ### Example of Using the New `LogCreateAsync()` Method
 
 Now, when creating a **new order**, we log an **audit entry** using **`LogCreateAsync`**.
