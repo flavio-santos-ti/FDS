@@ -12,13 +12,13 @@
 You can install this package via **NuGet Package Manager**:
 
 ```sh
-dotnet add package Flavio.Santos.NetCore.ApiResponse --version 1.0.2
+dotnet add package Flavio.Santos.NetCore.ApiResponse --version 1.0.14
 ```
 
 Or using Package Manager Console:
 
 ```powershell
-Install-Package Flavio.Santos.NetCore.ApiResponse -Version 1.0.2
+Install-Package Flavio.Santos.NetCore.ApiResponse -Version 1.0.14
 ```
 
 ## 🚀 Usage
