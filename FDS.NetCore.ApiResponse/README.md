@@ -29,23 +29,9 @@ Install-Package Flavio.Santos.NetCore.ApiResponse -Version 1.0.14
 ```csharp
 public async Task<Response<ClientDto>> AddAsync(ClientRequestDto request)
 {
-    if (await _clientRepository.ExistsByNameAsync(request.Name))
-    {
-        return Result.Create<ClientDto>(
-            actionType: ActionType.VALIDATION_ERROR,
-            message: "A client with this name already exists."
-        );
-    }
+    // Here I implement the update logic.
 
-    var client = new Client(Guid.NewGuid(), request.Name);
-    await _clientRepository.AddAsync(client);
-    var clientDto = new ClientDto { Id = client.Id, Name = client.Name };
-
-    return Result.Create(
-        actionType: ActionType.CREATE,
-        message: "Client created successfully.",
-        data: clientDto
-    );
+    return Result.CreateAdd(msg, clientDto);
 }
 ```
 
