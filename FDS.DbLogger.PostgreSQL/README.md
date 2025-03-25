@@ -2,8 +2,8 @@
 
 🚀 **FDS.DBLogger.PostgreSQL** is a robust .NET library for structured **audit logging** in PostgreSQL, designed to track and log application events efficiently.
 
-[![NuGet](https://img.shields.io/nuget/v/Flavio.Santos.UuidV7.NetCore.svg)](https://www.nuget.org/packages/Flavio.Santos.UuidV7.NetCore/)
-[![NuGet Downloads](https://img.shields.io/nuget/dt/Flavio.Santos.UuidV7.NetCore.svg)](https://www.nuget.org/packages/Flavio.Santos.UuidV7.NetCore/)
+[![NuGet](https://img.shields.io/nuget/v/Flavio.Santos.DbLogger.PostgreSQL.svg)](https://www.nuget.org/packages/Flavio.Santos.DbLogger.PostgreSQL/)
+[![NuGet Downloads](https://img.shields.io/nuget/dt/Flavio.Santos.DbLogger.PostgreSQL.svg)](https://www.nuget.org/packages/Flavio.Santos.DbLogger.PostgreSQL/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 ![.NET Core](https://img.shields.io/badge/.NET%20Core-8.0-blue?logo=dotnet)
 
@@ -29,15 +29,21 @@ The `audit_logs` table stores all audit log entries in a structured format withi
 ```sql
 CREATE TABLE audit_logs (
     id UUID PRIMARY KEY,
-    event_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    event_timestamp_local TIMESTAMP WITHOUT TIME ZONE,
+    event_timestamp_utc TIMESTAMP WITH TIME ZONE,
     event_action VARCHAR(255) NOT NULL,
     context_name VARCHAR(255) NOT NULL,
+    trace_identifier VARCHAR(50),
+    http_method VARCHAR(10) NOT NULL, 
+    request_path VARCHAR(500),
     http_status_code INTEGER,
     event_message TEXT,
     request_data JSONB, 
     response_data JSONB,
-    user_email VARCHAR(255)
+    user_id UUID
 );
+
+CREATE INDEX idx_audit_logs_user_id ON audit_logs (user_id);
 ```
 
 ## 🚀 Usage
