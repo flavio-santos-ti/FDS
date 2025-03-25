@@ -65,6 +65,33 @@ public async Task<Response<IEnumerable<ClientDto>>> GetAllAsync()
 }
 ```
 
+###  Handling Not Found (404)
+```csharp
+public async Task<Response<ClientDto>> GetByIdAsync(Guid id)
+{
+    var client = await _repository.FindByIdAsync(id);
+
+    if (client is null)
+        return Result.CreateNotFound<ClientDto>("Client not found.");
+
+    return Result.CreateGet("Client found.", client);
+}
+```
+
+### Handling Validation Errors (400)
+```csharp
+public async Task<Response<ClientDto>> AddAsync(ClientRequestDto request)
+{
+    if (string.IsNullOrWhiteSpace(request.Name))
+        return Result.CreateValidationError<ClientDto>("Client name is required.");
+
+    // Continuação do fluxo normal se for válido
+    var newClient = new ClientDto { Name = request.Name };
+    
+    return Result.CreateAdd("Client created successfully.", newClient);
+}
+```
+
 ## 📌 Output Example
 
 #### Client Not Found (404)
