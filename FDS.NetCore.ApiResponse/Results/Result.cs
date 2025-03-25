@@ -95,7 +95,7 @@ public static class Result
     /// <summary>
     /// Creates a standardized response object for a successful update operation.
     /// </summary>
-    public static Response<T> CreateUpdate<T>(T? data = default, string message = "Resource updated successfully.")
+    public static Response<T> CreateModify<T>(T? data = default, string message = "Resource updated successfully.")
     {
         return Create(ActionType.UPDATE, message, data);
     }
