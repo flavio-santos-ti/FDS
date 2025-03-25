@@ -87,7 +87,7 @@ public static class Result
     /// Creates a standardized response object for a successful delete operation.
     /// This method internally calls the generic Create method.
     /// </summary>
-    public static Response<T> CreateDelete<T>(string message = "Resource deleted successfully.", T? data = default)
+    public static Response<T> CreateRemove<T>(string message = "Resource deleted successfully.", T? data = default)
     {
         return Create(ActionType.DELETE, message, data);
     }
