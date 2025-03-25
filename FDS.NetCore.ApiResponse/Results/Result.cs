@@ -69,9 +69,9 @@ public static class Result
     /// <summary>
     /// Creates a standardized response for a resource not found error.
     /// </summary>
-    public static Response<T> CreateNotFound<T>(string message = "Resource not found.", T? data = default)
+    public static Response<T> CreateNotFound<T>(string message = "Resource not found.")
     {
-        return Create(ActionType.NOT_FOUND, message, data);
+        return Create<T>(ActionType.NOT_FOUND, message, default);
     }
 
     /// <summary>
