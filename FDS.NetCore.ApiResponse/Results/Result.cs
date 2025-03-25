@@ -16,7 +16,7 @@ public static class Result
     /// <param name="message">A descriptive message for the response. Defaults to "Success".</param>
     /// <param name="data">The optional data payload.</param>
     /// <returns>A standardized response object containing the result information.</returns>
-    public static Response<T> Create<T>(ActionType actionType, string message = "Success", T? data = default)
+    private static Response<T> Create<T>(ActionType actionType, string message = "Success", T? data = default)
     { 
         bool success = actionType == ActionType.CREATE ||
                        actionType == ActionType.CREATE_UPLOAD ||
@@ -44,7 +44,7 @@ public static class Result
     /// Creates a standardized response object for a successful creation operation.
     /// This method internally calls the generic Create method.
     /// </summary>
-    public static Response<T> CreateSuccess<T>(string message = "Resource created successfully.", T? data = default)
+    public static Response<T> CreateAdd<T>(string message = "Resource created successfully.", T? data = default)
     {
         return Create(ActionType.CREATE, message, data);
     }
