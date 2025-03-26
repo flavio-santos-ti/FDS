@@ -22,6 +22,9 @@ A **.NET Core Library** designed to **standard API responses**, ensuring consist
 
 🔗 **[View the Documentation for FDS.NetCore.ApiResponse](FDS.NetCore.ApiResponse/README.md)**
 
+### 📦 FDS.DBLogger.PostgreSQL
+
+🔗  **[View the Documentation for FDS.DBLogger.PostgreSQL](FDS.DBLogger.PostgreSQL/README.md)**
 
 ## 🔗 Author & Contact
 
