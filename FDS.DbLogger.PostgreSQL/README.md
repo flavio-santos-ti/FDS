@@ -23,9 +23,10 @@ Install-Package Flavio.Santos.DBLogger.PostgreSQL -Version 1.0.0
 
 ## 📂 Database Schema
 
-The `audit_logs` table stores all audit log entries in a structured format within a PostgreSQL database.
+The `audit_logs` table stores all audit log entries in a structured format in a PostgreSQL database.
 
 ### **Table Structure: `audit_logs`**
+
 ```sql
 CREATE TABLE audit_logs (
     id UUID PRIMARY KEY,
@@ -53,27 +54,43 @@ Use `LogCreateAsync()` to log the creation of an entity, capturing relevant requ
 
 #### **Example: Logging Client Creation in `ClientService`**
 ```csharp
+using FDS.DbLogger.PostgreSQL.Published;
+
 public async Task<Response<ClientDto>> AddAsync(ClientRequestDto request)
 {
+    string requestId = string.Empty;
+    string msg = string.Empty;
     try
     {
-        if (await _clientRepository.ExistsByNameAsync(request.Name))
+        requestId = await _auditLogService.LogInfoAsync("[START] - Client creation process started.", request);
+
+        msg = await _clientRepository.ExistsByNameAsync(request.Name);
+
+        if (!string.IsNullOrEmpty(msg))
         {
-            return Result.CreateValidationError<ClientDto>("A client with this name already exists.");
+            await _auditLogService.LogValidationErrorAsync(msg, request);
+            return Result.CreateValidationError<ClientDto>(msg);
         }
 
-        var client = new Client(Guid.NewGuid(), request.Name);
-        await _clientRepository.AddAsync(client);
+        var client = new Client(request.Name);
+        msg = await _clientRepository.AddAsync(client);
         var clientDto = new ClientDto { Id = client.Id, Name = client.Name };
 
-        string msg = "Client created successfully.";
         await _auditLogService.LogCreateAsync(msg, request, clientDto);
 
-        return Result.CreateSuccess(msg, clientDto);
+        return Result.CreateAdd(msg, clientDto);
     }
     catch (Exception ex)
     {
-        return Result.CreateError<ClientDto>($"An unexpected error occurred: {ex.Message}");
+        msg = $"An unexpected error occurred: {ex.Message}";
+        await _auditLogService.LogErrorAsync(msg);
+        return Result.CreateError<ClientDto>(msg);
+    }
+    finally
+    {
+        msg = "Client creation process completed.";
+        await _auditLogService.LogEndAsync(msg);
+        RequestDataStorage.ClearData(requestId);
     }
 }
 ```
