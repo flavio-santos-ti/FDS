@@ -52,4 +52,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 -🔹 NuGet Package: Flavio.Santos.UuidV7.NetCore
 -🔹 Author LinkedIn: Flavio Santos
 
-### 🔙 [Back to Main README](../../README.md)
+### [← Back to Main Project](https://github.com/flavio-santos-ti/FDS)
