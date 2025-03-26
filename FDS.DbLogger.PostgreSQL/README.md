@@ -47,6 +47,9 @@ CREATE TABLE audit_logs (
 CREATE INDEX idx_audit_logs_user_id ON audit_logs (user_id);
 ```
 
+![Visualização da Tabela de Logs](https://github.com/SeuUsuario/SeuRepositorio/raw/main/Assets/grid-database.png)
+
+
 ## 🚀 Usage
 
 ### **Logging a Create Event**
