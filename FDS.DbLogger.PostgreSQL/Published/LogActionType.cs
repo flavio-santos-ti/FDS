@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents different types of log actions that can be recorded.
 /// </summary>
-public sealed class LogActionType
+internal sealed class LogActionType
 {
     /// <summary>
     /// Gets the string value of the log action type.
