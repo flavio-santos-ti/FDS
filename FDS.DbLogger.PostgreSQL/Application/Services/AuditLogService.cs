@@ -1,4 +1,5 @@
 ﻿using FDS.DbLogger.PostgreSQL.Domain.Entities;
+using FDS.DbLogger.PostgreSQL.Domain.Enums;
 using FDS.DbLogger.PostgreSQL.Domain.Interfaces;
 using FDS.DbLogger.PostgreSQL.Published;
 using FDS.RequestTracking.Storage;
