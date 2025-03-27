@@ -12,13 +12,13 @@
 You can install this package via **NuGet Package Manager**:
 
 ```sh
-dotnet add package Flavio.Santos.DBLogger.PostgreSQL --version 1.0.1
+dotnet add package Flavio.Santos.DBLogger.PostgreSQL --version 1.0.2
 ```
 
 Or using Package Manager Console:
 
 ```powershell
-Install-Package Flavio.Santos.DBLogger.PostgreSQL -Version 1.0.1
+Install-Package Flavio.Santos.DBLogger.PostgreSQL -Version 1.0.2
 ```
 
 ## 📂 Database Schema
@@ -46,9 +46,9 @@ CREATE TABLE audit_logs (
 
 CREATE INDEX idx_audit_logs_user_id ON audit_logs (user_id);
 ```
+## Grid Database
 
-![Grid Database](https://github.com/flavio-santos-ti/FDS/raw/main/FDS.DbLogger.PostgreSQL/Assets/grid-database.png)
-
+![Grid Database](https://raw.githubusercontent.com/flavio-santos-ti/FDS/main/FDS.DbLogger.PostgreSQL/Assets/grid-database.png)
 
 ## 🚀 Usage
 
