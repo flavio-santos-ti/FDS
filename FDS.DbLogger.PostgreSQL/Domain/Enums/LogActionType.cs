@@ -1,4 +1,4 @@
-﻿namespace FDS.DbLogger.PostgreSQL.Published;
+﻿namespace FDS.DbLogger.PostgreSQL.Domain.Enums;
 
 /// <summary>
 /// Represents different types of log actions that can be recorded.

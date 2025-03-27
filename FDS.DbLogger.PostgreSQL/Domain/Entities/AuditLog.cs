@@ -1,7 +1,7 @@
 ﻿using UuidGenerator = FDS.UuidV7.NetCore.UuidV7;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using FDS.DbLogger.PostgreSQL.Published;
+using FDS.DbLogger.PostgreSQL.Domain.Enums;
 
 namespace FDS.DbLogger.PostgreSQL.Domain.Entities;
 
