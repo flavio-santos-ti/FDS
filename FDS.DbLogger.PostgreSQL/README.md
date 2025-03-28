@@ -58,6 +58,15 @@ CREATE INDEX idx_audit_logs_user_id ON audit_logs (user_id);
 
 You can register the audit logger using a connection string from your configuration files (e.g., appsettings.json) and provide a fallback value:
 
+```csharp
+using FDS.DbLogger.PostgreSQL.Published;
+
+var auditLogConnectionString = configuration.GetConnectionString("AuditLogConnection")
+    ?? "Host=localhost;Database=AuditLogDb;Username=defaultUser;Password=defaultPass";
+
+services.AddDbLogger(auditLogConnectionString);
+```
+
 ### **Logging a Create Event**
 Use `LogCreateAsync()` to log the creation of an entity, capturing relevant request and response data.
 
