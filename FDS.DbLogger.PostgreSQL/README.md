@@ -12,13 +12,13 @@
 You can install this package via **NuGet Package Manager**:
 
 ```sh
-dotnet add package Flavio.Santos.DBLogger.PostgreSQL --version 1.0.4
+dotnet add package Flavio.Santos.DBLogger.PostgreSQL --version 1.0.5
 ```
 
 Or using Package Manager Console:
 
 ```powershell
-Install-Package Flavio.Santos.DBLogger.PostgreSQL -Version 1.0.4
+Install-Package Flavio.Santos.DBLogger.PostgreSQL -Version 1.0.5
 ```
 
 ## 📂 Database Schema
