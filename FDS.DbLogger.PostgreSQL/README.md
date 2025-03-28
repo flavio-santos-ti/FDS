@@ -47,14 +47,13 @@ CREATE TABLE audit_logs (
 CREATE INDEX idx_audit_logs_user_id ON audit_logs (user_id);
 ```
 ## Grid Database
-## Grid Database
 
 [![Grid Database](https://raw.githubusercontent.com/flavio-santos-ti/FDS/main/FDS.DbLogger.PostgreSQL/Assets/grid-database.png)](https://raw.githubusercontent.com/flavio-santos-ti/FDS/main/FDS.DbLogger.PostgreSQL/Assets/grid-database.png)
 
 
 ## 🚀 Usage
 
-### 🛠️ Setup: Using AddDbLogger with Configuration
+### **Setup: Using AddDbLogger with Configuration**
 
 You can register the audit logger using a connection string from your configuration files (e.g., appsettings.json) and provide a fallback value:
 
