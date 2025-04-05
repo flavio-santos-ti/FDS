@@ -11,7 +11,7 @@ Removes diacritics (accents), trims whitespace, and converts text to uppercase i
 ## 🧪 Usage
 
 ```csharp
-using FDS.TextNormalizer;
+using TextNormalizer;
 
 string input = " João da Silva ";
 string normalized = Normalizer.Normalize(input);
