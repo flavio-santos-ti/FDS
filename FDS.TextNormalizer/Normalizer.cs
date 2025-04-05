@@ -19,7 +19,7 @@ public static class Normalizer
     /// Normaliza a string removendo acentuação,
     /// espaços excedentes e convertendo para maiúsculas.
     /// </summary>
-    public static string Normalize(string input)
+    public static string NormalizeText(string input)
     {
         if (string.IsNullOrWhiteSpace(input))
             return string.Empty;
