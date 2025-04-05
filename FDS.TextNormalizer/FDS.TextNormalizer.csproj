@@ -22,6 +22,14 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
-  
-  
+  <ItemGroup>
+    <None Include="bin\$(Configuration)\$(TargetFramework)\FDS.TextNormalizer.xml"
+          Pack="true"
+          PackagePath="lib\net8.0\" />
+
+    <None Include="README.md" Pack="true" PackagePath="" />
+
+  </ItemGroup>
+
+
 </Project>
