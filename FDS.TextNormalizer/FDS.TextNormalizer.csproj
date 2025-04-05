@@ -6,11 +6,15 @@
     <Nullable>enable</Nullable>
 
     <PackageId>Flavio.Santos.TextNormalizer</PackageId>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <Authors>Flavio dos Santos</Authors>
     <Company>FDS</Company>
     <Product>FDS.TextNormalizer – A lightweight C# text normalization library</Product>
-    <Description>Provides simple text normalization: removes diacritics, trims, and converts to uppercase invariant. / Fornece normalização simples de textos: remove acentuação, espaços extras e converte para maiúsculas invariantes.</Description>
+    <Description>
+      Provides simple text normalization: removes diacritics, trims, and converts to uppercase invariant. 
+      
+      Fornece normalização simples de textos: remove acentuação, espaços extras e converte para maiúsculas invariantes.
+    </Description>
     <PackageTags>text;normalizer;diacritics;uppercase;string;cleaning;FDS</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>Copyright © 2025 Flavio dos Santos</Copyright>
