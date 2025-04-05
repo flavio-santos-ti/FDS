@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
 
     <PackageId>Flavio.Santos.TextNormalizer</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Authors>Flavio dos Santos</Authors>
     <Company>FDS</Company>
     <Product>FDS.TextNormalizer – A lightweight C# text normalization library</Product>
