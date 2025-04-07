@@ -12,7 +12,6 @@
     <Product>FDS.TextNormalizer – A lightweight C# text normalization library</Product>
     <Description>
       Provides simple text normalization: removes diacritics, trims, and converts to uppercase invariant. 
-      
       Fornece normalização simples de textos: remove acentuação, espaços extras e converte para maiúsculas invariantes.
     </Description>
     <PackageTags>text;normalizer;diacritics;uppercase;string;cleaning;FDS</PackageTags>
