@@ -99,4 +99,13 @@ public static class Result
     {
         return Create(ActionType.UPDATE, message, data);
     }
+
+    /// <summary>
+    /// Creates a standardized response object for a successful login operation.
+    /// This method internally calls the generic Create method.
+    /// </summary>
+    public static Response<T> CreateLoginSuccess<T>(T? data = default, string message = "Login successful.")
+    {
+        return Create(ActionType.LOGIN_SUCCESS, message, data);
+    }
 }
