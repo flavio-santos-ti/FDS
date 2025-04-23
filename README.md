@@ -4,7 +4,7 @@
 ![NuGet UuidV7](https://img.shields.io/nuget/v/Flavio.Santos.UuidV7.NetCore?label=NuGet%20UuidV7) 
 ![Downloads](https://img.shields.io/nuget/dt/Flavio.Santos.UuidV7.NetCore?label=Downloads) 
 ![NuGet ApiResponse](https://img.shields.io/nuget/v/Flavio.Santos.NetCore.ApiResponse?label=NuGet%20ApiResponse) 
-![Downloads](https://img.shields.io/nuget/dt/Flavio.Santos.NetCore.ApiResponse?label=Downloads)
+![Nuget Downloads](https://img.shields.io/nuget/dt/Flavio.Santos.NetCore.ApiResponse?label=Downloads)
 
 This repository contains various .NET libraries developed to improve performance, security, and maintainability in .NET applications.
 
