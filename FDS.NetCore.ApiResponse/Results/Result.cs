@@ -109,6 +109,15 @@ public static class Result
     }
 
     /// <summary>
+    /// Creates a standardized response object for a successful upload creation.
+    /// </summary>
+    public static Response<T> CreateUpload<T>(string message = "Resource updated successfully.")
+    {
+        return Create<T>(ActionType.CREATE_UPLOAD, message, default);
+    }
+
+
+    /// <summary>
     /// Creates a standardized response object for a successful login operation.
     /// This method internally calls the generic Create method.
     /// </summary>
